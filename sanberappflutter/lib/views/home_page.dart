@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sanberappflutter/dummy_news.dart';
+import 'package:sanberappflutter/news_page.dart';
+import 'package:sanberappflutter/model/news_model.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,314 +10,200 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 2,
         leading: IconButton(
-          iconSize: 40,
-          icon: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black,
-            ),
-            child: Center(
-              child: Image.asset('assets/homePage/menu.png'),
-            ),
+          iconSize: 36,
+          icon: Icon(
+            Icons.menu,
+            color: Colors.black,
           ),
-          onPressed: () {
-            // do something
-          },
+          onPressed: () {},
         ),
         centerTitle: true,
         title: Text(
           "NewsApp",
           style: GoogleFonts.poppins(
             color: Colors.black,
-            fontSize: 16,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: 311,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
-                  width: 311,
-                  height: 311,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/homePage/Mask.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'TECHNOLOGY',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    '3 min ago',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 131),
-                              Text(
-                                'Microsoft launches a \ndeepfake detector tool \nahead of US election',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(height: 13),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    child:
-                                        Image.asset('assets/homePage/chat.png'),
-                                  ),
-                                  SizedBox(width: 24),
-                                  Container(
-                                    width: 17,
-                                    height: 23.95,
-                                    child: Image.asset(
-                                        'assets/homePage/bookmark.png'),
-                                  ),
-                                  SizedBox(width: 174),
-                                  Container(
-                                    width: 24,
-                                    height: 19.9,
-                                    child: Image.asset(
-                                        'assets/homePage/share.png'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 311,
-                  height: 311,
-                  margin: EdgeInsets.only(left: 8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/homePage/Mask.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'TECHNOLOGY',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    '3 min ago',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.white),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 131),
-                              Text(
-                                'Microsoft launches a \ndeepfake detector tool \nahead of US election',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(height: 13),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    child:
-                                        Image.asset('assets/homePage/chat.png'),
-                                  ),
-                                  SizedBox(width: 24),
-                                  Container(
-                                    width: 17,
-                                    height: 23.95,
-                                    child: Image.asset(
-                                        'assets/homePage/bookmark.png'),
-                                  ),
-                                  SizedBox(width: 174),
-                                  Container(
-                                    width: 24,
-                                    height: 19.9,
-                                    child: Image.asset(
-                                        'assets/homePage/share.png'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 40),
-          Row(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Latest News',
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                    color: Colors.grey),
+              // Berita Utama (Card Besar) with horizontal scroll
+              SizedBox(
+                height: 240,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(dummyNews.length, (index) {
+                      final News news = dummyNews[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: Container(
+                          width: 300,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            image: DecorationImage(
+                              image: AssetImage(news.imageUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Stack(
+                            children: [
+                              // Gradient overlay
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.black.withOpacity(0.7),
+                                      Colors.transparent,
+                                    ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                  ),
+                                ),
+                              ),
+                              // Content inside the card
+                              Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Top row (Category and Time)
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          news.category,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          news.time,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    // Title
+                                    Text(
+                                      news.title,
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
               ),
-              SizedBox(width: 228),
-              Container(
-                width: 16,
-                height: 16,
-                child: Image.asset('assets/homePage/arrow.png'),
-              )
+              SizedBox(height: 24),
+              // Latest News Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Latest News",
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      // Implement action for the arrow here
+                    },
+                    child: Image.asset(
+                      'assets/homePage/arrow.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              // List of smaller news cards
+              ListView.builder(
+                itemCount: dummyNews.length,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final News news = dummyNews[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Row(
+                      children: [
+                        // News image with border radius
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              image: AssetImage(news.imageUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        // News text details with adjusted spacing
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                news.category,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                news.title,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ],
           ),
-          SizedBox(height: 23),
-          Expanded(
-              child: ListView(
-            children: [
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        child: Image.asset('assets/homePage/Image.png'),
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'TECHNOLOGY',
-                            style: GoogleFonts.poppins(
-                                color: Colors.grey,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Insurtech startup \nPasarPolis gets \$54 \nmillion — Series B',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        child: Image.asset('assets/homePage/Image2.png'),
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'TECHNOLOGY',
-                            style: GoogleFonts.poppins(
-                                color: Colors.grey,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'The IPO parade \ncontinues as Wish \nfiles, Bumble targets',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        child: Image.asset('assets/homePage/Image3.png'),
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'TECHNOLOGY',
-                            style: GoogleFonts.poppins(
-                                color: Colors.grey,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Hypatos gets \n\$11.8M for a deep \nlearning approach',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              )
-            ],
-          )),
-        ],
+        ),
       ),
     );
   }
