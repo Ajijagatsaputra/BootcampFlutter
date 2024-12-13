@@ -59,7 +59,6 @@ class HomePage extends StatelessWidget {
                           ),
                           child: Stack(
                             children: [
-                              // Gradient overlay
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
@@ -77,12 +76,13 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    // Top row (Category and Time)
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           news.category,
@@ -110,6 +110,43 @@ class HomePage extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
+                                    Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            // Implement action for the arrow here
+                                          },
+                                          child: Image.asset(
+                                            'assets/homePage/chat.png',
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                        ),
+                                        SizedBox(width: 23),
+                                        InkWell(
+                                          onTap: () {
+                                            // Implement action for the arrow here
+                                          },
+                                          child: Image.asset(
+                                            'assets/homePage/bookmark.png',
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(width: 24),
+                                        InkWell(
+                                          onTap: () {
+                                            // Implement action for the arrow here
+                                          },
+                                          child: Image.asset(
+                                            'assets/homePage/share.png',
+                                            width: 24,
+                                            height: 24,
+                                          ),
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
@@ -129,9 +166,9 @@ class HomePage extends StatelessWidget {
                   Text(
                     "Latest News",
                     style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[700],
+                      fontSize: 14,
+
+                      color: Colors.grey,
                     ),
                   ),
                   InkWell(
