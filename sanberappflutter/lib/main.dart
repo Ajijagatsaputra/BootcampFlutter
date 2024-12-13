@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sanberappflutter/news_page.dart';
 import 'package:sanberappflutter/views/get_started_page.dart';
 
 void main(List<String> args) {
@@ -10,9 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: GetStartedPage()
+      home: const GetStartedPage(),
+      routes: {
+        '/news': (context) => const NewsPage(),
+        '/counter': (context) => const CounterPage(),
+      },
     );
   }
 }
@@ -26,8 +31,9 @@ class CounterPage extends StatefulWidget {
 
 class _CounterPageState extends State<CounterPage> {
   int counter = 0;
+
   @override
-  Widget build(BuildContext) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Counter Page"),
@@ -37,18 +43,19 @@ class _CounterPageState extends State<CounterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-                onTap: () {
-                  counter--;
-                  setState(() {});
-                },
-                child: const Icon(Icons.remove)),
+              onTap: () {
+                counter--;
+                setState(() {}); // Memperbarui UI setelah perubahan counter
+              },
+              child: const Icon(Icons.remove),
+            ),
             const SizedBox(width: 20),
             Text('Nilai Counter : $counter'),
             const SizedBox(width: 20),
             InkWell(
               onTap: () {
                 counter++;
-                setState(() {});
+                setState(() {}); // Memperbarui UI setelah perubahan counter
               },
               child: const Icon(Icons.add),
             )
@@ -58,11 +65,3 @@ class _CounterPageState extends State<CounterPage> {
     );
   }
 }
-
-//Analisis Terhadap SetState
-//Apa kegunaan
-
-//Pertama setelah saya analisis setState ada ketika code counter ++/ -- dijalankan , kenapa demikian ? dikarenakan setState sebagai penanda atau marking
-//bahwasanya scope code atau code sebelumnya merupakan stateful widget , maka stateful widget tersebut akan di update ketika setState dijalankan
-//Jadi ketika code counter ++/ -- dijalankan , maka stateful widget tersebut akan di update , sehingga code diatas akan dijalankan kembali
-//Untuk kegunaan dari setState tersebut untuk membuild ulang variabel counter ketika mendapatkan peringan dari user (--/++).
