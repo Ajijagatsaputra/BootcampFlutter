@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sanberappflutter/news_page.dart';
-import 'package:sanberappflutter/views/get_started_page.dart';
-import 'package:sanberappflutter/views/home_page.dart';
+import 'package:get/get.dart';
+import 'package:sanberappflutter/route/app_route.dart';
+
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -11,18 +11,16 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const GetStartedPage(),
-      routes: {
-        '/home': (context) => const HomePage(),
-        '/news': (context) => const NewsPage(),
-        '/counter': (context) => const CounterPage(),
-      },
+      initialRoute: '/get-started',
+      getPages: AppRoutes.routes,
     );
   }
 }
+
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
@@ -70,45 +68,45 @@ class _CounterPageState extends State<CounterPage> {
 
 
 //Sebagai bahan percobaan agar dapat melihat masing-masing tampilan yang dibuat dengan memanfaatkan elevated button
-class GetStartedPage extends StatelessWidget {
-  const GetStartedPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Get Started Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/news');
-              },
-              child: const Text("Go to News Page"),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-              child: const Text("Go to Home Page"),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/counter');
-              },
-              child: const Text("Go to Counter Page"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+// class GetStartedPage extends StatelessWidget {
+//   const GetStartedPage({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Get Started Page'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.pushNamed(context, '/news');
+//               },
+//               child: const Text("Go to News Page"),
+//             ),
+//             const SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.pushNamed(context, '/home');
+//               },
+//               child: const Text("Go to Home Page"),
+//             ),
+//             const SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.pushNamed(context, '/counter');
+//               },
+//               child: const Text("Go to Counter Page"),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 //ANALISI TERHADAP SETSTATE

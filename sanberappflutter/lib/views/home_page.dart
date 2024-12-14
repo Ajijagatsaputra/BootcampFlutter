@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sanberappflutter/dummy_news.dart';
-import 'package:sanberappflutter/news_page.dart';
 import 'package:sanberappflutter/model/news_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -38,7 +37,6 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Berita Utama (Card Besar) with horizontal scroll
               SizedBox(
                 height: 240,
                 child: SingleChildScrollView(
