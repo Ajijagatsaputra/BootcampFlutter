@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:sanberappflutter/settings_page.dart';
 import 'package:sanberappflutter/views/home_page.dart';
 
-class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({super.key});
+class Buttomnavbar extends StatefulWidget {
+  const Buttomnavbar({super.key});
 
   @override
-  State<BottomNavbar> createState() => _BottomNavbarState();
+  State<Buttomnavbar> createState() => _ButtomnavbarState();
 }
 
-class _BottomNavbarState extends State<BottomNavbar> {
+class _ButtomnavbarState extends State<Buttomnavbar> {
   int _currentIndex = 0;
-
-  // Tambahkan halaman Settings agar sinkron dengan jumlah item di BottomNavigationBar
   final List<Widget> _children = [
-    const HomePage(),
-    const SearchPage(),
-    const SettingsPage(),
+    HomePage(),
+    SearchPage(),
+    SettingsPage(),
   ];
 
   void onTabTapped(int index) {
@@ -34,43 +33,21 @@ class _BottomNavbarState extends State<BottomNavbar> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
         ],
       ),
     );
   }
 }
 
-// Halaman Search
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Search Page',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-// Halaman Settings
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Settings Page',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+    return Center(
+      child: Text('Search Page'),
     );
   }
 }

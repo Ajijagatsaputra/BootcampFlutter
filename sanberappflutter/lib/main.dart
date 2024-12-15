@@ -2,25 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sanberappflutter/route/app_route.dart';
 
-
-void main(List<String> args) {
+void main() async {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/get-started',
       getPages: AppRoutes.routes,
     );
   }
 }
-
 
 class CounterPage extends StatefulWidget {
   const CounterPage({super.key});
@@ -36,19 +32,18 @@ class _CounterPageState extends State<CounterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Counter Page"),
+        title: const Text('Counter Page'),
       ),
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: () {
-                counter--;
-                setState(() {});
-              },
-              child: const Icon(Icons.remove),
-            ),
+                onTap: () {
+                  counter--;
+                  setState(() {});
+                },
+                child: const Icon(Icons.remove)),
             const SizedBox(width: 20),
             Text('Nilai Counter : $counter'),
             const SizedBox(width: 20),
@@ -66,52 +61,12 @@ class _CounterPageState extends State<CounterPage> {
   }
 }
 
-
-//Sebagai bahan percobaan agar dapat melihat masing-masing tampilan yang dibuat dengan memanfaatkan elevated button
-// class GetStartedPage extends StatelessWidget {
-//   const GetStartedPage({Key? key}) : super(key: key);
+// //ANALISI TERHADAP SETSTATE
+// //APA KEGUNAAN
 //
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Get Started Page'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.pushNamed(context, '/news');
-//               },
-//               child: const Text("Go to News Page"),
-//             ),
-//             const SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.pushNamed(context, '/home');
-//               },
-//               child: const Text("Go to Home Page"),
-//             ),
-//             const SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 Navigator.pushNamed(context, '/counter');
-//               },
-//               child: const Text("Go to Counter Page"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+// // Pertama setelah saya analisi setState ada ketika code counter ++/-- dijalankan , kenapa demikian ? karena setState sebagai marking/Penanda
+// // bahwasannaya scope coode / code sebelumnya merupakan statefulwidget
+// // Dan kegunaan dari setState tersebut untuk membuil ulang variable counter ketika mendapatkan perintah --/++
 
 
-//ANALISI TERHADAP SETSTATE
-//APA KEGUNAAN
 
-// Pertama setelah saya analisi setState ada ketika code counter ++/-- dijalankan , kenapa demikian ? karena setState sebagai marking/Penanda
-// bahwasannaya scope coode / code sebelumnya merupakan statefulwidget
-// Dan kegunaan dari setState tersebut untuk membuil ulang variable counter ketika mendapatkan perintah --/++
