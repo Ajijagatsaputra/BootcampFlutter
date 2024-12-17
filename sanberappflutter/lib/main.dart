@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sanberappflutter/route/app_route.dart';
+import 'package:sanberappflutter/user/page/user_page.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      getPages: AppRoutes.routes,
+      home: UserPage(),
+      // getPages: AppRoutes.routes,
     );
   }
 }
